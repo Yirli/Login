@@ -18,6 +18,9 @@
     $message = 'Please provide your full name.';
   }elseif(empty($_POST['username'])){
     $message = 'Your username is not valid.';
+  }elseif(!isValidUsername($_POST['username'])){
+    $message = 'Username has been taken.';
+
   }else{
     $sql = "INSERT INTO users (email, password,name,lastName,sLastName,username,cellphone,phone,phoneCode) VALUES (:email,:password,:name,:lastName,:sLastName,:username,:cellphone,:phone,:phoneCode)";
     $stmt = $conn->prepare($sql);
@@ -53,6 +56,23 @@
       echo 'Strong password.';
     }
 
+  }
+
+  function isValidUsername($username){
+     //Valid si el usario existe
+    $sql = "SELECT Count(1) FROM users WHERE username = :username";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':username' , $username);
+    $stmt->execute();
+
+    $resultado = $stmt->fetchAll();
+    $disponible = $resultado[0][0]; //Aqui se guarda la cantidad de usuarios que existen con ese username (creo)
+
+
+    if($disponible == 0){
+      return True;
+    }
+    return False;
   }
 
   echo $message;
