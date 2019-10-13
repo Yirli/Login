@@ -1,6 +1,6 @@
 <?php
 
-class conection{
+class connection{
 	$server;
 	$username;
 	$password;
