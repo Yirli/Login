@@ -8,16 +8,15 @@ class connection{
 
 
 	function __construct($server, $username, $password, $database){
-		$this.server = $server;
-		$this.username = $username;
-		$this.password = $password;
-		$this.database = $database;
+		$this->server = $server;
+		$this->username = $username;
+		$this->password = $password;
+		$this->database = $database;
 	}
 
 	public function connect(){
-		$conn;
 		try {
-			$conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
+			$conn = new PDO("mysql:host=$this->server;dbname=$this->database;", $this->username, $this->password);
 		} catch (PDOException $e) {
 			die('Connection Failed: ' . $e->getMessage());
 		}
