@@ -3,9 +3,9 @@
 require_once('./db.inc.php');
 
 // Check if user is already logged in
-if ($user->is_logged_in()) {
+if (!$user->is_logged_in()) {
     // Redirect logged in user to their home page
-    $user->redirect('home.php');
+    $user->redirect('login.php');
 }
 
 // Check if log-in form is submitted
@@ -43,8 +43,8 @@ if (isset($_POST['Change'])) {
 
 <body>
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="login.php">Log In</a></li>
-    <li class="breadcrumb-item"><a href="register.php">Register</a></li>
+    <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+    <li class="breadcrumb-item"><a href="?logout=true">Log Out</a></li>
 </ol>
 <h1>Welcome</h1>
 
