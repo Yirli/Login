@@ -27,6 +27,11 @@ if (isset($_POST['Change'])) {
     }
 }
 
+if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
+    $user->log_out();
+    $user->redirect('login.php');
+}
+
 
 ?>
 
@@ -48,7 +53,7 @@ if (isset($_POST['Change'])) {
 </ol>
 
 <?php if (count($errors) > 0): ?>
-    <p>Error(s):</p>
+    <p>Information:</p>
     <ul>
         <?php foreach ($errors as $error):
             echo $error; endforeach

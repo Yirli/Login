@@ -1,6 +1,6 @@
 <?php
 // Include necessary file
-require_once('./db.inc.php');
+require './db.inc.php';
 
 // Check if user is already logged in
 if ($user->is_logged_in()) {
@@ -30,6 +30,8 @@ if (isset($_POST['register'])) {
         array_push($errors, "Please enter a valid password.");
     } elseif (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
         array_push($errors, "Please enter a valid e-mail address.");
+    }elseif (!$user->isValidPassword($user_password)){
+        array_push($errors,"Password is not strong enough. You have to include 8 characters, at least 1 Uppercase, 1 Lowercase and 1 number.");
     } else {
         try {
             // Define query to select matching values
@@ -56,8 +58,9 @@ if (isset($_POST['register'])) {
             } else {
                 // Check if the user may be registered
                 if ($user->register($user_name, $user_email, $user_password, $name, $lastName, $sLastName, $phoneCode, $cellphone, $phone)) {
-                    echo "Registered";
-                }
+                }else
+                    array_push($errors, "User uccesfully created");
+
             }
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());
@@ -83,7 +86,7 @@ if (isset($_POST['register'])) {
     <li class="breadcrumb-item"><a href="register.php">Register</a></li>
 </ol>
 <?php if (count($errors) > 0): ?>
-    <p>Error(s):</p>
+    <p>Information:</p>
     <ul>
         <?php foreach ($errors as $error): ?>
             <li><?= $error ?></li>

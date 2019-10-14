@@ -53,7 +53,7 @@ if (isset($_POST['log_in'])) {
 <h1>Welcome</h1>
 
 <?php if (count($errors) > 0): ?>
-    <p>Error(s):</p>
+    <p>Information:</p>
     <ul>
         <?php foreach ($errors as $error):
             echo $error; endforeach
