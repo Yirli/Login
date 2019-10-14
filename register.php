@@ -50,7 +50,7 @@ if (isset($_POST['register'])) {
             // Return clashes row as an array indexed by both column name
             $returned_clashes_row = $query->fetch(PDO::FETCH_ASSOC);
 
-            // Check for usernames or e-mail addresses that have already been used
+            // Check for user names or e-mail addresses that have already been used
             if ($returned_clashes_row['user_name'] == $user_name) {
                 array_push($errors, "That username is taken. Please choose something different.");
             } elseif ($returned_clashes_row['user_email'] == $user_email) {
@@ -87,9 +87,9 @@ if (isset($_POST['register'])) {
 </ol>
 <?php if (count($errors) > 0): ?>
     <ul>
-        <?php foreach ($errors as $error): ?>
-            <?= $error ?>
-        <?php endforeach ?>
+        <?php foreach ($errors as $error):
+            echo $error; endforeach
+        ?>
     </ul>
 <?php endif ?>
 

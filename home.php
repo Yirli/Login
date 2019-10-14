@@ -52,9 +52,9 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
 
 <?php if (count($errors) > 0): ?>
     <ul>
-        <?php foreach ($errors as $error): ?>
-            <li><?= $error ?></li>
-        <?php endforeach ?>
+        <?php foreach ($errors as $error):
+            echo $error; endforeach
+        ?>
     </ul>
 <?php endif ?>
 

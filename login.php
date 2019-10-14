@@ -65,7 +65,6 @@ if (isset($_POST['log_in'])) {
 <form action="login.php" method="POST">
     <input name="user_name_email" type="text" placeholder="Enter your username">
     <input name="user_password" type="password" placeholder="Enter your password">
-
     <input type="submit" name="log_in" value="Log in">
 </form>
 
