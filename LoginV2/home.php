@@ -51,7 +51,6 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
 <h1>Home</h1>
 
 <?php if (count($errors)>0): ?>
-    <p>Information: </p>
     <ul>
         <?php foreach ($errors as $error): ?>
             <li><?= $error ?></li>

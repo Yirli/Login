@@ -20,7 +20,8 @@ if (isset($_POST['Change'])) {
         // Check if the user may be logged in
         if ($user->editPassword($user_password)) {
             // Redirect if logged in successfully
-            $user->redirect('home.php');
+            array_push($errors, "Password successfully changed.");
+
         } else {
             array_push($errors, "There's an error.");
         }
@@ -53,7 +54,6 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
 </ol>
 
 <?php if (count($errors) > 0): ?>
-    <p>Information:</p>
     <ul>
         <?php foreach ($errors as $error):
             echo $error; endforeach
