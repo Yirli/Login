@@ -4,14 +4,13 @@ require 'User.php';
 class DBConnection{
 
 	private $conn;
-	private $errors;
 
 	public function __construct(){
 		$this->conn = new mysqli("localhost", "root", "", "login");
+		$this->errors = [];
 		if(mysqli_connect_error()){
 			die("Connection failed");
 		}
-		echo "Connected succesfully <br>";
 	}
 
 	public function __destruct(){

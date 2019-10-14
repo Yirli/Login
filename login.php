@@ -1,7 +1,10 @@
 <?php
 require 'DBConnection.php';
+require 'Validation.php';
 session_start();
-  if(!empty($_POST['username']) && !empty($_POST['password'])){
+$validate = new Validation();
+
+  if($validate->emptyFieldsLogin()){
     $dbConn = new DBConnection();
     if($dbConn->verifyLogin($_POST['username'],$_POST['password']))
     header('Location: index.php');
@@ -26,7 +29,6 @@ session_start();
     <form action="login.php" method="POST">
         <input name="username" type="text" placeholder="Enter your username">
         <input name="password" type="password" placeholder="Enter your password">
-
       <input type="submit" value="Submit">
     </form>
   </body>
