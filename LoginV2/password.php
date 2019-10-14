@@ -22,7 +22,7 @@ if (isset($_POST['Change'])) {
             // Redirect if logged in successfully
             $user->redirect('home.php');
         } else {
-            array_push($errors, "Incorrect log-in credentials.");
+            array_push($errors, "There's an error.");
         }
     }
 }
@@ -46,7 +46,6 @@ if (isset($_POST['Change'])) {
     <li class="breadcrumb-item"><a href="home.php">Home</a></li>
     <li class="breadcrumb-item"><a href="?logout=true">Log Out</a></li>
 </ol>
-<h1>Welcome</h1>
 
 <?php if (count($errors) > 0): ?>
     <p>Error(s):</p>

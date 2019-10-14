@@ -87,16 +87,18 @@ class User
             // Define query to insert values into the users table
             $sql = "UPDATE users SET user_password=:user_password WHERE user_id=:user_id";
 
+            $user_hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
+
             // Prepare the statement
             $query = $this->db->prepare($sql);
 
             // Bind parameters
-            $query->bindParam(":user_password", $user_password);
-            $query->bindParam(":user_name", $_SESSION['user_session']);
+            $query->bindParam(":user_password", $user_hashed_password);
+            $query->bindParam(":user_id", $_SESSION['user_session']);
 
             // Execute the query
             $query->execute();
-
+            return true;
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());
         }

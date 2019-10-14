@@ -3,7 +3,7 @@
 session_start();
 
 // Include necessary file
-include_once 'User.class.php';
+include_once 'user.php';
 
 // Define variable for custom error messages
 $errors = [];
@@ -12,7 +12,7 @@ $errors = [];
 $db_host = 'localhost';
 $db_user = 'root';
 $db_pass = '';
-$db_name = 'oop_login';
+$db_name = 'login';
 
 // Establish a new connection using PDO
 try {
