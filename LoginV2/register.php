@@ -1,6 +1,6 @@
 <?php
 // Include necessary file
-require './db.inc.php';
+require './dbconn.php';
 
 // Check if user is already logged in
 if ($user->is_logged_in()) {

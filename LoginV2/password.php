@@ -1,6 +1,6 @@
 <?php
 // Include necessary file
-require_once('./db.inc.php');
+require_once('./dbconn.php');
 
 // Check if user is already logged in
 if (!$user->is_logged_in()) {
@@ -18,6 +18,9 @@ if (isset($_POST['Change'])) {
         array_push($errors, "Please enter a valid password.");
     } else {
         // Check if the user may be logged in
+        if (!$user->isValidPassword($_POST["user_password"])){
+            array_push($errors, "Password is not strong enough. You have to include 8 characters, at least 1 Uppercase, 1 Lowercase and 1 number.");
+        }
         if ($user->editPassword($user_password)) {
             // Redirect if logged in successfully
             array_push($errors, "Password successfully changed.");

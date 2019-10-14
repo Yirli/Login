@@ -1,6 +1,6 @@
 <?php
 // Include necessary file
-include_once './db.inc.php';
+include_once './dbconn.php';
 
 // Check if user is not logged in
 if (!$user->is_logged_in()) {
@@ -50,7 +50,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
 </ol>
 <h1>Home</h1>
 
-<?php if (count($errors)>0): ?>
+<?php if (count($errors) > 0): ?>
     <ul>
         <?php foreach ($errors as $error): ?>
             <li><?= $error ?></li>
